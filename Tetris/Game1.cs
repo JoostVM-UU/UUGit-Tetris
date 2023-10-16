@@ -19,7 +19,7 @@ namespace Tetris
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            // Test
+            // Test 2
             base.Initialize();
         }
 

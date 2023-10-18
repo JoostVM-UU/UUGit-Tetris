@@ -5,9 +5,9 @@ using Microsoft.Xna.Framework.Content;
 
 class TetrisGame : Game
 {
-    SpriteBatch spriteBatch;
-    InputHelper inputHelper;
-    GameWorld gameWorld;
+    private SpriteBatch spriteBatch;
+    private InputHelper inputHelper;
+    private GraphicsDeviceManager graphics;
 
     /// <summary>
     /// A static reference to the ContentManager object, used for loading assets.
@@ -30,7 +30,7 @@ class TetrisGame : Game
     public TetrisGame()
     {
         // initialize the graphics device
-        GraphicsDeviceManager graphics = new GraphicsDeviceManager(this);
+        graphics = new GraphicsDeviceManager(this);
 
         // store a static reference to the content manager, so other objects can use it
         ContentManager = Content;
@@ -47,6 +47,13 @@ class TetrisGame : Game
         inputHelper = new InputHelper();
     }
 
+    protected override void Initialize()
+    {
+        // TODO: Add your initialization logic here
+        // Test 2
+        base.Initialize();
+    }
+
     protected override void LoadContent()
     {
         spriteBatch = new SpriteBatch(GraphicsDevice);
@@ -61,12 +68,14 @@ class TetrisGame : Game
         inputHelper.Update(gameTime);
         gameWorld.HandleInput(gameTime, inputHelper);
         gameWorld.Update(gameTime);
+        base.Update(gameTime);
     }
 
     protected override void Draw(GameTime gameTime)
     {
         GraphicsDevice.Clear(Color.White);
         gameWorld.Draw(gameTime, spriteBatch);
+        base.Draw(gameTime);
     }
 }
 
